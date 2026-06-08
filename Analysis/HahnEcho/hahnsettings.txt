@@ -1,0 +1,8 @@
+config = copy(default_config)
+
+config.add_exponential_sweep("tau", "ftus", start=0.5, stop=2000, scaling_factor="3/2")
+config.n_cpmg = 1 # NOTE: This is equivalent to a Hahn Echo sequence
+config.reps = 50000
+
+prog = CPMGXYFineRes(config)
+hahnecho_data = prog.acquire(progress=True)
